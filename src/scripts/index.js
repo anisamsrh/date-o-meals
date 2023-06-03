@@ -10,11 +10,10 @@ import dataJSON from '../DATA.json';
 //   )
 // )
 //console.log(data);
-data = dataJSON.restaurants;
+const data = dataJSON.restaurants;
 
 //function for making list from data
   //finding how much data
-const countData = data.length;
   //function itemList
 const newElement = (elmt) => {
   return document.createElement(elmt);
