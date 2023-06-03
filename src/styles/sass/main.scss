@@ -1,0 +1,583 @@
+@import './partial/breakpoint';
+@import url(https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap);
+
+$open-sans: 'Open Sans', sans-serif;
+$main-color: #E5B04D;
+$second-color: #B40E1D;
+$text-color: white;
+$card-color: wheat;
+$font-size: 2rem;
+$updown-shadow: 0 -5px 10px black;
+$navbar-height: 4rem;
+
+//header -> nav
+//nav.drawer -> ul.drawer
+//hero -> header
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  font-family: $open-sans;
+}
+
+body {
+  min-width: 320px;
+}
+
+main {
+  max-width: 1440px;
+  margin: auto;
+}
+
+.clickable {
+  min-width: 44px;
+  min-height: 44px;
+
+  &:hover {
+    color: white;
+  }
+
+  &:focus {
+    color: lighten($color: $second-color, $amount: 10%);
+  }
+}
+
+header {
+  margin-top: $navbar-height;
+  background-image: url(../../public/images/heros/hero-image_2.jpg);
+  width: 100%;
+  aspect-ratio: 1350 / 900;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  @include breakpoint(small) {
+    margin-top: 0;
+  }
+
+  @include breakpoint(large) {
+    height: 100vh;
+  }
+
+  @include breakpoint(x-large) {
+    min-width: 1000px;
+  }
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: $navbar-height;
+  background-color: $main-color;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem 0 2rem;
+  z-index: 99;
+  color: $text-color;
+  box-shadow: $updown-shadow;
+
+  @include breakpoint(small) {
+    background-color: transparent;
+    box-shadow: none;
+    position: fixed;
+    width: 100%;
+    padding:0 2.5rem;
+  }
+
+  @include breakpoint(large) {
+    padding: 0.5rem 4rem 0 4rem;
+  }
+}
+
+.logo {
+  img {
+    width: 5rem;
+    color: $second-color;
+    object-fit: contain;
+  }
+
+  @include breakpoint(small) {
+    img {
+      width: 7rem;
+    }
+  }
+
+  // @include breakpoint(medium) {
+  //   img {
+  //     width: 8rem;
+  //   }
+  // }
+
+  // @include breakpoint(large) {
+  //   img {
+  //     width: 10rem;
+  //   }
+  // }
+}
+
+.hamburger {
+  font-size: calc($font-size);
+  line-height: 4rem;
+  text-align: center;
+  width: 4rem;
+  background-color: transparent;
+  border: none;
+  color: white;
+  
+  &:hover {
+    color: darken(white, 20%);
+  }
+
+  &:focus {
+    color: darken(white, 20%);
+  }
+  
+  @include breakpoint(small) {
+    display: none;
+  }
+}
+
+.drawer {
+  $drawer-width: 10rem;
+  width: $drawer-width;
+  height: 100%;
+  position: fixed;
+  right: 0;
+  top: $navbar-height;
+  background-color: white;
+  transform: translate(calc($drawer-width), 0);
+  transition: transform 0.3s ease-in-out;
+  font-size: clac($font-size - 10);
+  padding: 0 1rem;
+
+  list-style: none;
+  margin-right: 0;
+
+  @include breakpoint(small) {
+    transform: none;
+    position: static;
+    height: fit-content;
+    background-color: transparent;
+    width: 24rem;
+    top: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  li {
+    border-bottom: 1px solid $second-color;
+    height: 3rem;
+    text-align: left;
+
+    @include breakpoint(small) {
+      border-bottom: none;
+      text-align: center;
+      height: 2.7rem;
+      background-color: $main-color;
+      border-radius: 0.5rem;
+      padding: 0 0.6rem;
+    }
+
+    @include breakpoint(medium) {
+      height: 2.7rem;
+    }
+  }
+
+  a {
+    display: inline-block;
+    font-size: calc($font-size - 1rem);
+    line-height: 100%;
+    padding-top: 20%;
+    text-decoration: none;
+    color: $second-color;
+
+    @include breakpoint(small) {
+      font-size: calc($font-size - 1.1rem);
+      font-weight: 700;
+      line-height: 2.7rem;
+      padding-top: 0;
+      color: white;
+    }
+
+    @include breakpoint(large) {
+      font-weight: 700;
+    }
+  }
+}
+
+.open {
+  transform: translate(0, 0);
+}
+
+.skip-to-content {
+  position: fixed;
+  background-color: white;
+  padding: 0.7rem;
+  z-index: 100;
+  border-radius: 0.5rem;
+  border: 0.3rem solid $second-color;
+  font-weight: 700;
+  text-decoration: none;
+  color:black; 
+  top: 0; 
+  left: 3rem;
+  transform: translateY(-100%);
+  transition: transform 0.3s;
+
+  &:focus {
+    transform: translateY(100%);
+    display: block;
+  }
+}
+
+.hero {
+  width: 100%;
+  font-size: calc($font-size - 0.6rem);
+  font-weight: 400;
+  padding: 0.5rem 4rem;
+  color: $text-color;
+  text-shadow: 0 0 2rem black;
+  background-color: fade-out($second-color, 0.3);
+
+  b {
+    white-space: nowrap;
+  }
+
+  @include breakpoint(small) {
+    font-size: calc($font-size - 0.7rem);;
+    text-shadow: 0 0 3rem black;
+  }
+
+  @include breakpoint(medium) {
+    font-size: calc($font-size);
+    text-shadow: 0 0 5rem black;
+    padding: 2rem 9rem;
+  }
+}
+
+//styling list restaurant
+$border-radius: 1rem;
+$br-upper: $border-radius $border-radius 0 0;
+$br-under: 0 0 $border-radius $border-radius;
+
+.list-title {
+  margin: 4rem 1rem 2rem;
+  color: $main-color;
+  font-size: calc($font-size - 0.8rem);
+
+  @include breakpoint(small) {
+    font-size: calc($font-size - 0.6rem);
+  }
+
+  @include breakpoint(medium) {
+    font-size: calc($font-size - 0.1rem);
+    margin: 7rem 1rem 5rem;
+  }
+}
+
+.list-container {
+  display: grid;
+  gap: 2rem;
+  width: 80%;
+  margin: auto;
+  margin-bottom: 2rem;
+  justify-content: center;
+  align-items: start;
+
+  @include breakpoint(small) {
+    gap: 2.5rem;
+  }
+
+  @include custom-breakpoint(780px) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @include breakpoint(large) {
+    width: 90%;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 3rem;
+  }
+}
+
+.list-item {
+  width: 100%;
+  max-width: 26rem;
+  min-width: 17rem;
+  margin: auto;
+  overflow-wrap: normal;
+  word-wrap: break-word;
+  background-color: lighten($card-color, 15%);
+  border-radius: $border-radius;
+  box-shadow: 0 0 0.8rem fade-out($color: #000000, $amount: 0.8);
+}
+
+.upper-section {
+  height: 20rem;
+  overflow:hidden;
+  clip: auto;
+}
+
+.resto-picture {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: $br-upper;
+  object-fit: cover;
+
+  @include breakpoint(small) {
+    min-height: 100%;
+    max-height: 110%;
+    min-width: 100%;
+    max-width: 110%;
+  }
+}
+
+$label-width: 6rem;
+$label-height: 3.3rem;
+
+//for review
+@mixin rating-label($position, $height) {
+  position: absolute;
+  line-height: $height;
+  font-size: calc($font-size - 0.9rem);
+  font-weight: bold;
+  width: $height;
+  aspect-ratio: 1;
+  #{$position}: 0;
+  z-index: 2;
+  color: white;
+
+  @if ($position == right) {
+      width: calc($height - 10%);
+      margin-top: calc($height/10);
+  }
+
+  @include breakpoint(small) {
+    font-size: calc($font-size - 0.6rem);
+  }
+
+  @include breakpoint(medium) {
+    font-size: calc($font-size - 0.4rem);
+  }
+}
+
+.resto-rating {
+  width: $label-width;
+  position: relative;
+  display: flex;
+  background-color: $second-color;
+
+  p {
+    @include rating-label(left, $label-height);
+    margin-left: 0.5rem;
+  }
+
+  img {
+    @include rating-label(right, $label-height);
+    margin-right: 0.3rem;
+  }
+
+
+  &::before {
+    content: "";
+    display: block;
+    width: calc($label-width - calc($label-height/2));
+    position: absolute;
+    top: 0;
+    border: calc($label-height/2) solid $second-color;
+    border-right-color: transparent;
+    line-height: 0;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: $label-width;
+    height: calc($label-height - 1rem);
+    background-color: $second-color;
+  }
+
+  @include breakpoint(small) {
+    $small-label-width: 6.5rem;
+    $small-label-height: 3.5rem;
+
+    width: $small-label-width;
+
+    p {
+      @include rating-label(left, $small-label-height);
+      margin-left: 0.5rem;
+    }
+  
+    img {
+      @include rating-label(right, $small-label-height);
+      margin-right: 0.3rem;
+    }
+
+    &::before {
+      border: calc($small-label-height/2) solid $second-color;
+      border-right-color: transparent;
+      width: calc($small-label-width - calc($small-label-height/2));
+    }
+
+    &::after {
+      width: $small-label-width;
+      height: calc($small-label-height - 1rem);
+    }
+  }
+
+  @include breakpoint(medium) {
+    $medium-label-width: 7rem;
+    $medium-label-height: 3.9rem;
+
+    width: $medium-label-width;
+
+    p {
+      @include rating-label(left, $medium-label-height);
+      margin-left: 0.5rem;
+    }
+  
+    img {
+      @include rating-label(right, $medium-label-height);
+      margin-right: 0.3rem;
+    }
+
+    &::before {
+      border: calc($medium-label-height/2) solid $second-color;
+      border-right-color: transparent;
+      width: calc($medium-label-width - calc($medium-label-height/2));
+    }
+
+    &::after {
+      width: $medium-label-width;
+      height: calc($medium-label-height - 1rem);
+    }
+  }
+}
+
+.under-section {
+  border-radius: $br-under;
+  padding: 1rem 2rem 1rem 2rem;
+  width: 100%;
+
+  * {
+    text-align: left;
+  }
+}
+
+.resto-name {
+  font-size: calc($font-size - 0.9rem);
+
+  @include breakpoint(small) {
+    font-size: calc($font-size - 0.7rem);
+  }
+
+  @include breakpoint(small) {
+    font-size: calc($font-size - 0.6rem);
+  }
+}
+
+.resto-city {
+  font-size: calc($font-size - 1rem);
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+  color: $second-color;
+
+  @include breakpoint(small) {
+    font-size: calc($font-size - 0.9rem);
+  }
+
+  @include breakpoint(medium) {
+    font-size: calc($font-size - 0.8rem);
+  }
+}
+
+.resto-description {
+  width: 100%;
+  height: 10rem;
+  margin-bottom: 5px;
+  font-size: calc($font-size - 1.1rem);
+  line-height: 1.7rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  @include breakpoint(small) {
+    font-size: calc($font-size - 1rem);
+  }
+
+  @include breakpoint(small) {
+    font-size: calc($font-size - 0.9rem);
+  }
+}
+
+.more-button {
+  color: rgb(0, 183, 255);
+  text-decoration: underline;
+  font-size: calc($font-size - 1rem);
+  padding: 0 0.5rem;
+  line-height: 2rem;
+  background-color: transparent;
+  border: none;
+
+  &:hover {
+    color : lighten($color: skyblue, $amount: 10%);
+  }
+
+  &:focus {
+    color: lighten($color: skyblue, $amount: 10%);
+  }
+
+  @include breakpoint(medium) {
+    margin-top: 1rem;
+    font-size: calc($font-size - 0.9rem);
+  }
+}
+
+.extended-overflow {
+  display: block;
+  text-overflow: clip;
+  height: auto;
+}
+
+.footer {
+  height: 4rem;
+  background-color: $main-color;
+  padding: 0.5rem;
+  color: $text-color;
+  box-shadow: 0 5px 10px black;
+
+  p {
+    line-height: 1.3rem;
+    font-size: calc($font-size - 1.2rem);
+  }
+
+  @include breakpoint(small) {
+    height: 5rem;
+    padding: 0.7rem;
+    p {
+      line-height: 1.5rem;
+      font-size: calc($font-size - 1.1rem);
+    }
+  }
+
+  @include breakpoint(small) {
+    height: 6rem;
+    padding: 1rem;
+    p {
+      line-height: 1.9rem;
+      font-size: calc($font-size - 1rem);
+    }
+  }
+}

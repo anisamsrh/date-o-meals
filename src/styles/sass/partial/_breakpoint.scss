@@ -1,0 +1,29 @@
+//variable
+$screen : (
+  small: 600px,
+  medium: 768px,
+  large: 992px,
+  x-large: 1200px
+);
+
+@mixin breakpoint($screen-size){
+  @if (#{map-get($screen, $screen-size)}) {
+    @media screen and (min-width: #{map-get($screen, $screen-size)}) {
+      @content;
+    }
+  }
+}
+
+@mixin custom-breakpoint($screen-size) {
+  @media screen and (min-width: $screen-size) {
+    @content;
+  }
+}
+
+//max-width
+//dekstop first approch
+//use @media from the biggest to the smallest
+
+//min-width
+//mobile first approch
+//use @media from the smallest to the biggest
