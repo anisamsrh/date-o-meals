@@ -3,14 +3,14 @@ import '../styles/css/main.css';
 
 //function for taking data from data.json
 //import {readFile} from 'fs/promises';
-import data from '../DATA.json';
+import dataJSON from '../DATA.json';
 // const dataJSON = JSON.parse(
 //   await readFile(
 //     new URL('../DATA.json', import.meta.url);
 //   )
 // )
 //console.log(data);
-data = data.restaurants;
+data = dataJSON.restaurants;
 
 //function for making list from data
   //finding how much data
