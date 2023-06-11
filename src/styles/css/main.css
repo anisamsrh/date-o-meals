@@ -9,6 +9,7 @@
 
 body {
   min-width: 320px;
+  min-height: 100%;
 }
 
 main {
@@ -27,7 +28,11 @@ main {
   color: #e31225;
 }
 
-header {
+.hero-hidden {
+  display: none;
+}
+
+.hero {
   margin-top: 4rem;
   background-image: url(../../public/images/heros/hero-image_2.jpg);
   width: 100%;
@@ -42,17 +47,17 @@ header {
   flex-direction: column;
 }
 @media screen and (min-width: 600px) {
-  header {
+  .hero {
     margin-top: 0;
   }
 }
 @media screen and (min-width: 992px) {
-  header {
+  .hero {
     height: 100vh;
   }
 }
 @media screen and (min-width: 1200px) {
-  header {
+  .hero {
     min-width: 1000px;
   }
 }
@@ -213,7 +218,7 @@ nav {
   display: block;
 }
 
-.hero {
+.hero-text {
   width: 100%;
   font-size: 1.4rem;
   font-weight: 400;
@@ -222,17 +227,17 @@ nav {
   text-shadow: 0 0 2rem black;
   background-color: rgba(180, 14, 29, 0.7);
 }
-.hero b {
+.hero-text b {
   white-space: nowrap;
 }
 @media screen and (min-width: 600px) {
-  .hero {
+  .hero-text {
     font-size: 1.3rem;
     text-shadow: 0 0 3rem black;
   }
 }
 @media screen and (min-width: 768px) {
-  .hero {
+  .hero-text {
     font-size: 2rem;
     text-shadow: 0 0 5rem black;
     padding: 2rem 9rem;

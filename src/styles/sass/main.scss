@@ -23,6 +23,7 @@ $navbar-height: 4rem;
 
 body {
   min-width: 320px;
+  min-height: 100%;
 }
 
 main {
@@ -43,7 +44,11 @@ main {
   }
 }
 
-header {
+.hero-hidden{
+  display: none;
+}
+
+.hero {
   margin-top: $navbar-height;
   background-image: url(../../public/images/heros/hero-image_2.jpg);
   width: 100%;
@@ -240,7 +245,7 @@ nav {
   }
 }
 
-.hero {
+.hero-text {
   width: 100%;
   font-size: calc($font-size - 0.6rem);
   font-weight: 400;
