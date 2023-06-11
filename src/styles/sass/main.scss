@@ -330,6 +330,7 @@ $br-under: 0 0 $border-radius $border-radius;
   height: 20rem;
   overflow:hidden;
   clip: auto;
+  position: relative;
 }
 
 .resto-picture {
@@ -377,7 +378,8 @@ $label-height: 3.3rem;
 
 .resto-rating {
   width: $label-width;
-  position: relative;
+  position: absolute;
+  top: 0;
   display: flex;
   background-color: $second-color;
 
