@@ -1,6 +1,6 @@
-import newListItem from '../../custom-element/resto-item';
 import RESTO_API from '../../data/resto-api';
 import NavbarStylist from '../../styles/navbar-stylist';
+import { createListItem } from '../template/template-creator';
 
 const Home = {
   async render() {
@@ -31,10 +31,10 @@ const Home = {
   async _showRestaurants() {
     const restaurants = await RESTO_API.allRestaurants();
     const container = document.querySelector('.list-container');
-    console.log(restaurants);
 
     restaurants.forEach((restaurant) => {
-      container.innerHTML += newListItem(restaurant);
+      // container.innerHTML += newListItem(restaurant);
+      container.append(createListItem(restaurant));
     });
   },
 };
