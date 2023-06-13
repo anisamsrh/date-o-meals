@@ -1,15 +1,18 @@
+import RESTO_API from '../../data/resto-api';
+import UrlParser from '../../routes/url-parser';
 import NavbarStylist from '../../styles/navbar-stylist';
+import { createRestaurantDetail } from '../template/template-creator';
 
 const Detail = {
   async render() {
     return `
-    <h2 class="list-title">Nama Resto</h2>
     `;
   },
 
-  afterRender() {
+  async afterRender() {
     this._hideHero();
     this._navbarScrollGradient();
+    await this._showRestaurantDetail();
   },
 
   _hideHero() {
@@ -23,6 +26,12 @@ const Detail = {
       navbar: document.querySelector('#navbar'),
       on: false,
     });
+  },
+
+  async _showRestaurantDetail() {
+    const { id } = UrlParser.parseActiveUrlWithoutCombiner();
+    const detail = await RESTO_API.detailRestaurant(id);
+    document.querySelector('#main').append(createRestaurantDetail(detail));
   },
 };
 
