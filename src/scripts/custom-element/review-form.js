@@ -25,3 +25,4 @@ class ReviewForm extends HTMLElement {
 }
 
 customElements.define('review-form', ReviewForm);
+export default ReviewForm;

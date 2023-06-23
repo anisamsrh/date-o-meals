@@ -5,6 +5,7 @@
 // Deskripsi
 // Menu Makanan
 import CONFIG from '../global/config';
+import ReviewItem from './review-item';
 
 class RestoDetail extends HTMLElement {
   constructor({
@@ -27,6 +28,7 @@ class RestoDetail extends HTMLElement {
   connectedCallback() {
     this._render();
     this._style();
+    this._addReviews();
     this._setCategories();
     this._setMenus();
     this._menusButtonListener();
@@ -267,7 +269,21 @@ class RestoDetail extends HTMLElement {
   }
 
   _addReviews() {
-    // TODO : add custom element revies to DOM
+    const section = document.createElement('section');
+    const reviewHeader = document.createElement('h2');
+    reviewHeader.innerText = 'Review';
+
+    const reviews = this._customerReviews.map((review) => {
+      const reviewItem = new ReviewItem(review);
+      return reviewItem;
+    });
+
+    section.append(reviewHeader);
+    reviews.forEach((review) => {
+      section.append(review);
+    });
+
+    this._shadowRoot.append(section);
   }
 }
 
