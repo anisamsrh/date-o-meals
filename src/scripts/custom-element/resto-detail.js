@@ -279,20 +279,12 @@ class RestoDetail extends HTMLElement {
       const reviewItem = new ReviewItem(review);
       return reviewItem;
     });
-    // const reviews = [];
-    // for (let index = this._customerReviews.length; index > (this._customerReviews.length - 10); index--) {
-    //   const reviewItem = new ReviewItem(this._customerReviews[index - 1]);
-    //   reviews[index - 1] = reviewItem;
-    // }
 
     section.append(reviewHeader);
     section.append(reviewForm);
     reviews.forEach((review) => {
       section.append(review);
     });
-    // for (let index = reviews.length; index > (reviews.length - 10); index--) {
-    //   section.append(reviews[index - 1]);
-    // }
 
     this._shadowRoot.append(section);
   }
