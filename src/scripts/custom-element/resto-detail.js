@@ -5,6 +5,7 @@
 // Deskripsi
 // Menu Makanan
 import CONFIG from '../global/config';
+import FavButton from './fav-button';
 import ReviewForm from './review-form';
 import ReviewItem from './review-item';
 
@@ -34,6 +35,7 @@ class RestoDetail extends HTMLElement {
     this._setMenus();
     this._menusButtonListener();
     this._moreButtonListener();
+    this._favButton();
   }
 
   _render() {
@@ -287,6 +289,11 @@ class RestoDetail extends HTMLElement {
     });
 
     this._shadowRoot.append(section);
+  }
+
+  _favButton() {
+    const favButton = new FavButton({ id: this._id });
+    this._shadowRoot.append(favButton);
   }
 }
 
