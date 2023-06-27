@@ -292,7 +292,16 @@ class RestoDetail extends HTMLElement {
   }
 
   _favButton() {
-    const favButton = new FavButton({ id: this._id });
+    const favButton = new FavButton({
+      id: this._id,
+      data: {
+        id: this._id,
+        name: this._name,
+        description: this._description,
+        city: this._city,
+        rating: this._rating,
+      },
+    });
     this._shadowRoot.append(favButton);
   }
 }
