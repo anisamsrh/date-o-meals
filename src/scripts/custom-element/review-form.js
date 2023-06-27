@@ -67,7 +67,9 @@ class ReviewForm extends HTMLElement {
 
     :host {
       display: block;
+      width: 80%;
       margin: auto;
+      max-width: 30rem;
       --red: #B40E1D;
       --yellow: #E5B04D;
       --light-yellow: #ffce70c7;
@@ -82,6 +84,8 @@ class ReviewForm extends HTMLElement {
         border-style: solid;
         background: #fff9edc7;
         height: 3rem;
+        max-width: calc(100% - 5rem);
+        width: -webkit-fill-available;
     }
 
     #review:focus-visible{

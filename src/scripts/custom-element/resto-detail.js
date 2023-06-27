@@ -178,9 +178,10 @@ class RestoDetail extends HTMLElement {
       align-items: center;
       justify-content: center;
       box-shadow: var(--card-shadow);
-      width: fit-content;
+      width: 80%;
       margin: auto;
       border-radius: 0.7rem 0.7rem 0 0;
+      max-width: 30rem;
     }
 
     .active-button {
@@ -191,8 +192,9 @@ class RestoDetail extends HTMLElement {
     .menu-button button {
       border: none;
       padding: 1rem;
-      width: 7rem;
+      min-width: 7rem;
       display: block;
+      width: inherit;
     }
 
     .menu-button_foods {
@@ -205,16 +207,57 @@ class RestoDetail extends HTMLElement {
 
     .menu-list {
       padding: 1rem;
-      width: 14rem;
+      min-width: 14rem;
       margin: auto;
       background-color: var(--broken-white);
       box-shadow: var(--card-shadow);
       border-top: solid 0.25rem var(--red);
       border-radius: 0 0 0.7rem 0.7rem;
+      width: 80%;
+      max-width: 30rem;
     }
 
     .menu-list_foods p, .menu-list_drinks p {
       line-height: 1.75rem;
+    }
+
+    .review-container {
+      display: grid;
+      max-width: 60rem;
+      width: 80%;
+      margin: auto;
+    }
+
+    @media screen and (min-width: 600px) {
+      .review-container {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media screen and (min-width: 752px) {
+      .s1 {
+        display: flex;
+        margin: 2rem;
+        gap: 1rem;
+        max-width: 60rem;
+      }
+
+      .s4 {
+        margin-top: 4rem;
+      }
+    }
+
+    @media screen and (min-width: 994px) {
+      .s1 {
+        width: 80%;
+        margin: 2rem auto;
+      }
+    }
+
+    @media screen and (min-width: 1200px) {
+      .review-container {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
     }
     </style>
     `;
@@ -276,6 +319,8 @@ class RestoDetail extends HTMLElement {
     const reviewHeader = document.createElement('h2');
     reviewHeader.innerText = 'Review';
     const reviewForm = new ReviewForm(this._id);
+    const reviewContainer = document.createElement('div');
+    reviewContainer.classList.add('review-container');
 
     const reviews = this._customerReviews.map((review) => {
       const reviewItem = new ReviewItem(review);
@@ -285,8 +330,9 @@ class RestoDetail extends HTMLElement {
     section.append(reviewHeader);
     section.append(reviewForm);
     reviews.forEach((review) => {
-      section.append(review);
+      reviewContainer.append(review);
     });
+    section.append(reviewContainer);
 
     this._shadowRoot.append(section);
   }
