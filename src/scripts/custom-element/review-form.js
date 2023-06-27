@@ -68,7 +68,7 @@ class ReviewForm extends HTMLElement {
     :host {
       display: block;
       width: 80%;
-      margin: auto;
+      margin: auto !important;
       max-width: 30rem;
       --red: #B40E1D;
       --yellow: #E5B04D;

@@ -2,9 +2,14 @@ const OffCanvas = {
   async init({ button, drawer }) {
     this._button = button;
     this._drawer = drawer;
+    this._addEvent();
+  },
 
-    this._button.addEventListener('click', this._listener);
-    window.addEventListener('hashchange', this._removeListener);
+  _addEvent() {
+    const controller = new AbortController();
+    const { signal } = controller;
+    this._button.addEventListener('click', () => this._listener(), { signal });
+    window.addEventListener('hashchange', () => controller.abort(), { once: true });
   },
 
   _listener() {
