@@ -4,6 +4,7 @@ import Detail from '../view/pages/detail';
 
 const routes = {
   '/': Home,
+  '/home': Home,
   '/favorite': Favorite,
   '/detail/:id': Detail,
 };

@@ -300,6 +300,7 @@ class RestoDetail extends HTMLElement {
         description: this._description,
         city: this._city,
         rating: this._rating,
+        pictureId: this._pictureId,
       },
     });
     this._shadowRoot.append(favButton);

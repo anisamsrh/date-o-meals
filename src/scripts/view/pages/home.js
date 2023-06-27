@@ -33,7 +33,6 @@ const Home = {
     const container = document.querySelector('.list-container');
 
     restaurants.forEach((restaurant) => {
-      // container.innerHTML += newListItem(restaurant);
       container.append(createListItem(restaurant));
     });
   },

@@ -16,7 +16,7 @@ const FavoriteRestoDB = {
   },
 
   async getAllRestos() {
-    const restos = (await dbPromise).get(OBJECT_STORE_NAME);
+    const restos = (await dbPromise).getAll(OBJECT_STORE_NAME);
     return restos;
   },
 
