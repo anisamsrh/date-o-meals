@@ -384,6 +384,10 @@ $border-radius: 1rem;
 $br-upper: $border-radius $border-radius 0 0;
 $br-under: 0 0 $border-radius $border-radius;
 
+.fav-title {
+  margin-top: 6rem !important;
+}
+
 .list-title {
   margin: 4rem 1rem 2rem;
   color: $main-color;

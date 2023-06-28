@@ -5,7 +5,7 @@ import { createListItem } from '../template/template-creator';
 const Favorite = {
   async render() {
     return `
-    <h2 class="list-title">My Favorite Places</h2>
+    <h2 class="list-title fav-title">My Favorite Places</h2>
     <div class="list-container"></div>
     `;
   },

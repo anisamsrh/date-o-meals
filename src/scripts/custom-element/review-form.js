@@ -15,16 +15,20 @@ class ReviewForm extends HTMLElement {
 
   _render() {
     this._shadowRoot.innerHTML = `
-    <form>
-      <input id="review" type="textarea" placeholder="Your review here...">
-      <button id="add-button">Add</button>
+    <form class="form">
+      <section class="section1">
+        <input id="name" class="input" type="text" placeholder="your name...">
+        <input id="review" class="input" type="textarea" placeholder="Your review here...">
+      </section>
+      <section>
+        <button id="add-button">Add</button>
+      </section>
     </form>
     `;
   }
 
   // eslint-disable-next-line class-methods-use-this
   async _sendReview(reviewData) {
-    // TODO : fetch POST to API
     const reviewJSON = JSON.stringify(reviewData);
     const newReview = await RESTO_API.postReview(reviewJSON);
     return newReview;
@@ -36,9 +40,10 @@ class ReviewForm extends HTMLElement {
     const button = this._shadowRoot.querySelector('#add-button');
     button.addEventListener('click', async () => {
       const review = this._shadowRoot.querySelector('#review').value;
+      const name = this._shadowRoot.querySelector('#name').value;
       const reviewData = {
         id: this._id,
-        name: 'test-user-dev',
+        name,
         review,
       };
       const newReview = await this._sendReview(reviewData);
@@ -50,9 +55,9 @@ class ReviewForm extends HTMLElement {
   // eslint-disable-next-line class-methods-use-this
   _afterSendReview(newReview) {
     if (!newReview) {
-      alert('Berhasil mengirim review');
+      alert('Succeed sending review');
     } else {
-      alert('Gagal mengirim review');
+      alert('Failed sending review');
     }
   }
 
@@ -77,7 +82,7 @@ class ReviewForm extends HTMLElement {
       --card-shadow: 0 0 0.8rem rgba(0, 0, 0, 0.2);
     }
 
-    #review {
+    .input {
         padding: 0.5rem;
         border-radius: 0.5rem;
         border-color: var(--light-yellow);
@@ -86,9 +91,11 @@ class ReviewForm extends HTMLElement {
         height: 3rem;
         max-width: calc(100% - 5rem);
         width: -webkit-fill-available;
+        display: block;
+        margin: 0.5rem auto;
     }
 
-    #review:focus-visible{
+    .input:focus-visible{
       border-color: var(--yellow);
       outline: none;
     }
@@ -102,6 +109,18 @@ class ReviewForm extends HTMLElement {
       background: var(--red);
       border-color: var(--broken-white);
       color: white;
+    }
+
+    @media screen and (min-width: 600px) {
+      .form {
+        display: flex;
+        justify-items: center;
+        align-items: center;
+      }
+  
+      .section1 {
+        width: -webkit-fill-available;
+      }
     }
     </style>
     `;

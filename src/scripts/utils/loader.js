@@ -5,6 +5,10 @@ const Loader = {
       loader.classList.add('none');
     }, { once: true });
   },
+
+  revive(loader) {
+    loader.classList.remove('disappear', 'none');
+  },
 };
 
 export default Loader;

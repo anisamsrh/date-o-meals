@@ -21,7 +21,7 @@ class App {
     });
   }
 
-  _removeLoader() {
+  _useLoader() {
     window.addEventListener('load', Loader.remove(this._loader), { once: true });
   }
 
@@ -31,7 +31,7 @@ class App {
     this._content.innerHTML = await page.render();
     await page.afterRender();
     await this._initiateOffCanvas();
-    this._removeLoader();
+    this._useLoader();
   }
 }
 

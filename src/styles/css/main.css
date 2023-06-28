@@ -343,6 +343,10 @@ nav {
   display: none;
 }
 
+.fav-title {
+  margin-top: 6rem !important;
+}
+
 .list-title {
   margin: 4rem 1rem 2rem;
   color: #E5B04D;
