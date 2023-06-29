@@ -47,6 +47,11 @@ class RestoItem extends HTMLElement {
     font-family: "Open Sans", sans-serif;
     }
 
+    .clickable {
+      min-height: 44px;
+      min-width: 44px;
+    }
+
     :host {
       width: 100%;
       max-width: 26rem;

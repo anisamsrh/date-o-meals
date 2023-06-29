@@ -47,12 +47,14 @@ class RestoDetail extends HTMLElement {
           <img src="${CONFIG.BASE_IMAGE_URL_SMALL}/${this._pictureId}" alt="Picture of ${this._name}">
           <h1 class="name">${this._name}</h1>
         </div>
-        <p class="address"><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" height="1.5rem" viewBox="0 0 384 512"><style>svg{fill:#b40e1d}</style><path d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z"/></svg></span>&nbsp;&nbsp;${this._address}</p>
+        <p class="address"><span class="icon">
+        <svg xmlns="http://www.w3.org/2000/svg" height="1.5rem" viewBox="0 0 384 512"><style>svg{fill:#b40e1d}</style><path d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z"/></svg></span>&nbsp;&nbsp;
+        ${this._address}, ${this._city}</p>
       </section>
       <section class="s4">
         <div class="description">
         <p>${this._description}</p>
-        <button class="more-button"> ... More</button>
+        <button class="more-button"><span> ... More</span></button>
         </div>
         <div class="categories"></div>
       </section>
@@ -89,6 +91,11 @@ class RestoDetail extends HTMLElement {
       padding: 0;
       margin: 0;
       font-family: var(--font);
+    }
+
+    button, a {
+      min-height: 44px;
+      min-width: 44px;
     }
 
     .img-container {
@@ -149,6 +156,13 @@ class RestoDetail extends HTMLElement {
       border: none;
       font-size: 1rem;
       color: var(--red);
+      background-color: transparent;
+      display: flex;
+      align-items: flex-end;
+    }
+
+    .more-button > span {
+      background-color: white;
     }
 
     .categories {

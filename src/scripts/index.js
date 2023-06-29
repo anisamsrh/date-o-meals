@@ -30,6 +30,7 @@ const app = new App({
   drawer: document.querySelector('.drawer'),
   content: document.querySelector('#main'),
   loader: document.querySelector('.loader'),
+  skipToContent: document.querySelector('.skip-to-content'),
 });
 
 window.addEventListener('hashchange', () => {
@@ -38,5 +39,6 @@ window.addEventListener('hashchange', () => {
 
 window.addEventListener('load', () => {
   app.renderPage();
+  app.useLoader();
   swRegister();
 });
