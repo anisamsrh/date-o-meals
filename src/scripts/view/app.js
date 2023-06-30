@@ -33,6 +33,8 @@ class App {
       this._skipToContent.addEventListener('click', (event) => {
         event.preventDefault();
         document.querySelector('#main').focus();
+        const mainOffset = document.querySelector('#main').offsetTop - 80;
+        window.scrollTo(0, mainOffset);
       });
     }
   }
