@@ -15,7 +15,7 @@ class RestoDetail extends HTMLElement {
   }) {
     super();
     this._shadowRoot = this.attachShadow({ mode: 'open' });
-    this._id = id;
+    this._id = id || null;
     this._name = name;
     this._description = description;
     this._city = city;
@@ -24,7 +24,7 @@ class RestoDetail extends HTMLElement {
     this._categories = categories;
     this._menus = menus;
     this._rating = rating;
-    this._customerReviews = customerReviews;
+    this._customerReviews = customerReviews || [];
   }
 
   connectedCallback() {

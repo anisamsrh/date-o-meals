@@ -14,19 +14,29 @@ class FavButton extends HTMLElement {
   }
 
   async connectedCallback() {
-    await this._render();
+    this._render();
     this._style();
     this._favButtonListener();
+    await this._afterRender();
   }
 
   async _render() {
     this.setAttribute('id', this._id);
     this._shadowRoot.innerHTML = '<button class="icon"><svg class="icon-svg" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z"/></svg></button>';
+    // if (await this._isFavorite()) {
+    //   this._liked();
+    // } else {
+    //   this._unliked();
+    // }
+  }
+
+  async _afterRender() {
     if (await this._isFavorite()) {
       this._liked();
     } else {
       this._unliked();
     }
+    this.dispatchEvent(new Event('resto:favorite:identified'));
   }
 
   _style() {
@@ -91,37 +101,58 @@ class FavButton extends HTMLElement {
   }
 
   _favButtonListener() {
+    // this.addEventListener('click', () => this.dispatchEvent(new Event('resto:favorite:updated')));
     this.addEventListener('click', this._clickHandler);
+    // this.addEventListener('click', () => {
+    //   this.dispatchEvent(new Event('resto:favorite:updated'));
+    //   // if (this._class === 'like-button') {
+    //   //   FavoriteRestoDB.putResto(this._data);
+    //   //   this.dispatchEvent(new Event('resto:favorite:updated'));
+    //   // } else {
+    //   //   FavoriteRestoDB.deleteResto(this._id);
+    //   //   this.dispatchEvent(new Event('resto:favorite:updated'));
+    //   // }
+    // });
   }
 
   async _clickHandler() {
-    if (await this._isFavorite()) {
-      this._removeFavorite();
+    if (this._class === 'unlike-button') {
+      await this._removeFavorite();
     } else {
-      this._addFavorite();
+      await this._addFavorite();
     }
+    // this.dispatchEvent(new Event('resto:favorite:updated'));
   }
 
   _liked() {
     this._shadowRoot.querySelector('.icon-svg').classList.add('liked');
     this._shadowRoot.querySelector('.icon-svg').classList.remove('unliked');
     this._like = true;
+    this._setClass('unlike-button');
   }
 
   async _addFavorite() {
     await FavoriteRestoDB.putResto(this._data);
     this._liked();
+    this.dispatchEvent(new Event('resto:favorite:updated'));
   }
 
   _unliked() {
     this._shadowRoot.querySelector('.icon-svg').classList.add('unliked');
     this._shadowRoot.querySelector('.icon-svg').classList.remove('liked');
     this._like = false;
+    this._setClass('like-button');
   }
 
   async _removeFavorite() {
     await FavoriteRestoDB.deleteResto(this._id);
     this._unliked();
+    this.dispatchEvent(new Event('resto:favorite:updated'));
+  }
+
+  _setClass(kelas) {
+    this._class = kelas;
+    this.className = kelas;
   }
 }
 
