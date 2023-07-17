@@ -35,7 +35,7 @@ main {
 
 .hero {
   margin-top: 4rem;
-  background-image: url(../../public/images/heros/hero-image_2.jpg);
+  background-image: url(../../../dist/images/heros/hero-image-small.jpg);
   width: 100%;
   aspect-ratio: 1350/900;
   background-repeat: no-repeat;
@@ -50,6 +50,7 @@ main {
 @media screen and (min-width: 600px) {
   .hero {
     margin-top: 0;
+    background-image: url(../../../dist/images/heros/hero-image-large.jpg);
   }
 }
 @media screen and (min-width: 992px) {

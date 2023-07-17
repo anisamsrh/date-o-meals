@@ -9,7 +9,8 @@
     "test": "karma start",
     "start-sass": "sass --watch src/styles/sass/main.scss src/styles/css/main.css",
     "serve": "http-server dist",
-    "e2e": "codeceptjs run --steps"
+    "e2e": "codeceptjs run --steps",
+    "build-image": "node sharp.js"
   },
   "keywords": [],
   "author": "your_name <your.email@domain.com>",
@@ -26,6 +27,8 @@
     "eslint-plugin-import": "^2.27.5",
     "html-webpack-plugin": "^5.5.0",
     "http-server": "^14.1.1",
+    "imagemin-mozjpeg": "^9.0.0",
+    "imagemin-webpack-plugin": "^2.4.2",
     "jasmine-ajax": "^4.0.0",
     "jasmine-core": "^4.2.0",
     "karma": "^5.2.3",
@@ -37,6 +40,7 @@
     "puppeteer": "^20.8.2",
     "sass": "^1.62.1",
     "sass-loader": "^13.2.2",
+    "sharp": "^0.32.3",
     "style-loader": "^3.3.1",
     "webpack": "^5.73.0",
     "webpack-cli": "^4.10.0",
