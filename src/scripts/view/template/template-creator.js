@@ -3,6 +3,7 @@
 
 import RestoDetail from '../../custom-element/resto-detail';
 import RestoItem from '../../custom-element/resto-item';
+import observer from '../../utils/intersection-observer';
 
 const createListItem = (restaurant) => {
   const listItemElement = new RestoItem(restaurant);
@@ -12,6 +13,8 @@ const createListItem = (restaurant) => {
     () => { window.location = `/#/detail/${restaurant.id}`; },
     { once: true },
   );
+
+  observer.observe(listItemElement);
 
   return listItemElement;
 };

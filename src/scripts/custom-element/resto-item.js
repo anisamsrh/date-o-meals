@@ -24,7 +24,7 @@ class RestoItem extends HTMLElement {
     this.classList.add('list-item');
     this._shadowRoot.innerHTML = `
     <section class="upper-section">
-      <img class="resto-picture" src="${CONFIG.BASE_IMAGE_URL_SMALL}/${this._pictureId}" alt="Picture of ${this._name}">
+      <img class="resto-picture" alt="Picture of ${this._name}">
       <div class="resto-rating"><p>${this._rating.toFixed(1)}</p><img src="./images/rating/star-rating.jpg"></div>
     </section>
     <section class="under-section">
@@ -373,6 +373,10 @@ class RestoItem extends HTMLElement {
     
     </style>
     `;
+  }
+
+  renderPicture() {
+    this._shadowRoot.querySelector('.resto-picture').src = `${CONFIG.BASE_IMAGE_URL_SMALL}/${this._pictureId}`;
   }
 }
 
