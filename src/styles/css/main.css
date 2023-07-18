@@ -341,7 +341,7 @@ nav {
 }
 
 .none {
-  display: none;
+  display: none !important;
 }
 
 .fav-title {
