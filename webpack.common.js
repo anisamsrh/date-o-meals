@@ -9,6 +9,7 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 module.exports = {
   entry: {
     app: path.resolve(__dirname, 'src/scripts/index.js'),
+    extra: path.resolve(__dirname, 'src/scripts/extra.js'),
   },
   output: {
     filename: '[name].bundle.js',
@@ -51,6 +52,10 @@ module.exports = {
           globOptions: {
             ignore: ['**/heros/**'],
           },
+        },
+        {
+          from: path.resolve(__dirname, 'src/public/images/heros/optimized'),
+          to: path.resolve(__dirname, 'dist/images/heros'),
         },
       ],
     }),

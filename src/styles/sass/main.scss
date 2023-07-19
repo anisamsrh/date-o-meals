@@ -48,7 +48,8 @@ main {
 
 .hero {
   margin-top: $navbar-height;
-  background-image: url(../../../dist/images/heros/hero-image-small.jpg);
+  // background-image: url(../../public/images/heros/hero-image-small.jpg);
+  position: relative;
   width: 100%;
   aspect-ratio: 1350 / 900;
   background-repeat: no-repeat;
@@ -62,7 +63,7 @@ main {
 
   @include breakpoint(small) {
     margin-top: 0;
-    background-image: url(../../../dist/images/heros/hero-image-large.jpg);
+    // background-image: url(../../public/images/heros/hero-image-large.jpg);
   }
 
   @include breakpoint(large) {
@@ -71,6 +72,16 @@ main {
 
   @include breakpoint(x-large) {
     min-width: 1000px;
+  }
+}
+
+.hero-image {
+  position: absolute;
+  z-index: -1;
+  min-width: 100vw;
+
+  * {
+    width: 100%;
   }
 }
 

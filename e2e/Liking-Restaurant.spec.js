@@ -52,3 +52,7 @@ Scenario('remove a restaurant from favorite list', ({ I }) => {
 
   I.dontSeeElement('resto-item');
 });
+
+Scenario('Add a new review', ({ I }) => {
+
+});
