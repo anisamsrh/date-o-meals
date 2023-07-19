@@ -1,5 +1,10 @@
 @import './partial/breakpoint';
-@import url(https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap);
+// @import url(https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap);
+
+@font-face {
+  font-family: 'Open Sans';
+  src: local('./font/OpenSans-VariableFont_wdth,wght.ttf');
+}
 
 $open-sans: 'Open Sans', sans-serif;
 $main-color: #E5B04D;
