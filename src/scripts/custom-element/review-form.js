@@ -1,5 +1,5 @@
 import RESTO_API from '../data/resto-api';
-import ReviewItem from './review-item';
+// import ReviewItem from './review-item';
 
 class ReviewForm extends HTMLElement {
   constructor(id) {
@@ -60,9 +60,9 @@ class ReviewForm extends HTMLElement {
   async _afterSendReview(newReview) {
     if (!newReview) {
       alert('Success sending review');
-      const review = JSON.parse(newReview);
-      const newReviewItem = new ReviewItem(review.customerReviews.pop());
-      document.querySelector('resto-detail').shadowRoot.querySelector('review-container').prepend(newReviewItem);
+      // const review = JSON.parse(newReview);
+      // const newReviewItem = new ReviewItem(review.customerReviews.pop());
+      // document.querySelector('resto-detail').shadowRoot.querySelector('review-container').prepend(newReviewItem);
     } else {
       alert('Failed sending review');
     }

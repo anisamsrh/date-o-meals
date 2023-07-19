@@ -52,43 +52,36 @@ Scenario('Unlike Restaurant', ({ I }) => {
   I.dontSeeElement('resto-item');
 });
 
-// Scenario('Add a new review', ({ I }) => {
-//   let lengthAfter;
-//   let lengthBefore;
-//   let nameInput;
-//   let reviewInput;
-//   let button;
-//   I.amOnPage('/');
+Scenario('Add a new review', ({ I }) => {
+  I.amOnPage('/');
 
-//   I.waitForElement('resto-item', 3);
-//   I.seeElement('resto-item');
+  I.waitForElement('resto-item', 3);
+  I.seeElement('resto-item');
 
-//   I.click('resto-item');
+  I.click('resto-item');
 
-//   I.waitForElement('resto-detail', 3);
-//   I.seeElement('resto-detail');
-//   I.usePuppeteerTo('write new review', async ({ page }) => {
-//     lengthBefore = await page.$$('resto-detail >>> input#name');
-//     nameInput = await page.waitForSelector('resto-detail >>> input#name');
-//     reviewInput = await page.waitForSelector('resto-detail >>> input#review');
-//     button = await page.waitForSelector('resto-detail >>> #add-button');
-//     nameInput.value = 'Daniel';
-//     await page.$eval(nameInput, (el) => el.value = 'Daniel');
-//     reviewInput.value = 'Makan di sini sangat memuaskan';
-//     await page.$eval(reviewInput, (el) => el.value = 'Makan di sini sangat memuaskan');
-//     button.click();
-//   });
+  I.waitForElement('resto-detail', 3);
+  I.seeElement('resto-detail');
+  I.usePuppeteerTo('write new review', async ({ page }) => {
+    const submitButton = await page.waitForSelector('resto-detail >>> #add-button');
+    await page.evaluate(() => {
+      const name = document.querySelector('resto-detail').shadowRoot.querySelector('review-form').shadowRoot.querySelector('#name');
+      name.value = 'Daniele';
+    });
+    await page.evaluate(() => {
+      const name = document.querySelector('resto-detail').shadowRoot.querySelector('review-form').shadowRoot.querySelector('#review');
+      name.value = 'Makan di sini sangat memuaskan';
+    });
+    submitButton.click();
 
-//   I.wait(6);
-//   console.log(nameInput);
-//   console.log(reviewInput);
-//   console.log(button);
-//   pause();
+    page.on('dialog', async (dialog) => {
+      if ((await dialog.message()) !== 'Success sending review') {
+        throw new Error('review failed');
+      }
+      console.log(await dialog.message());
+      await dialog.accept();
+    });
+  });
 
-//   I.usePuppeteerTo('write new review', async ({ page }) => {
-//     lengthAfter = await page.$$('resto-detail >>> input#name');
-//   });
-
-//   I.wait(3);
-//   assert.notStrictEqual(lengthAfter, lengthBefore);
-// });
+  I.wait(10);
+});
