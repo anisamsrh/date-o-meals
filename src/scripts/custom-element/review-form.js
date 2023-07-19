@@ -39,6 +39,9 @@ class ReviewForm extends HTMLElement {
     const controller = new AbortController();
     const { signal } = controller;
     const button = this._shadowRoot.querySelector('#add-button');
+    this._shadowRoot.querySelector('.form').addEventListener('submit', (e) => {
+      e.preventDefault();
+    });
     button.addEventListener('click', async () => {
       const review = this._shadowRoot.querySelector('#review').value;
       const name = this._shadowRoot.querySelector('#name').value;
