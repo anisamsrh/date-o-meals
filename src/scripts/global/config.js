@@ -5,7 +5,7 @@ const CONFIG = {
   DATABASE_NAME: 'date-o-meals-database',
   DATABASE_VERSION: 1,
   OBJECT_STORE_NAME: 'restaurants',
-  CACHE_NAME: new Date(),
+  CACHE_NAME: 'restaurant-cache',
 };
 
 export default CONFIG;

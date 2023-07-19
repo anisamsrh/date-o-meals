@@ -31,6 +31,7 @@ const Home = {
 
   _renderSkeletonUi() {
     const container = document.querySelector('.list-container');
+    // eslint-disable-next-line no-plusplus
     for (let index = 0; index < 6; index++) {
       container.innerHTML += createSkeletonUi();
     }
