@@ -59,6 +59,7 @@ class ReviewForm extends HTMLElement {
   // eslint-disable-next-line class-methods-use-this
   async _afterSendReview(newReview) {
     if (!newReview) {
+      alert('Success sending review');
       const review = JSON.parse(newReview);
       const newReviewItem = new ReviewItem(review.customerReviews.pop());
       document.querySelector('resto-detail').shadowRoot.querySelector('review-container').prepend(newReviewItem);
