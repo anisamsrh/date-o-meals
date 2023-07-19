@@ -60,7 +60,7 @@ class ReviewForm extends HTMLElement {
   async _afterSendReview(newReview) {
     if (!newReview) {
       const review = JSON.parse(newReview);
-      const newReviewItem = new ReviewItem(review);
+      const newReviewItem = new ReviewItem(review.customerReviews[-1]);
       document.querySelector('resto-detail').shadowRoot.querySelector('review-container').prepend(newReviewItem);
     } else {
       alert('Failed sending review');
