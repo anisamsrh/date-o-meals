@@ -32,6 +32,38 @@ main {
   color: #e31225;
 }
 
+@keyframes gradient {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 200% 200%;
+  }
+}
+.skeleton {
+  width: 100%;
+  max-width: 26rem;
+  min-width: 17rem;
+  margin: auto;
+  background-color: white;
+  border-radius: 1rem;
+  box-shadow: 0 0 0.8rem rgba(0, 0, 0, 0.2);
+  height: 39rem;
+  background: linear-gradient(white 40%, #ebebeb, white 60%);
+  background-size: 200% 200%;
+  animation: gradient ease-in-out 4s infinite;
+}
+@media screen and (min-width: 600px) {
+  .skeleton {
+    height: 39.5rem;
+  }
+}
+@media screen and (min-width: 768px) {
+  .skeleton {
+    height: 40.6rem;
+  }
+}
+
 .hero-hidden {
   display: none;
 }
@@ -53,11 +85,6 @@ main {
 @media screen and (min-width: 600px) {
   .hero {
     margin-top: 0;
-  }
-}
-@media screen and (min-width: 992px) {
-  .hero {
-    height: 100vh;
   }
 }
 @media screen and (min-width: 1200px) {

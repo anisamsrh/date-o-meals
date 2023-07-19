@@ -22,6 +22,7 @@ class App {
     });
   }
 
+  // currently commented
   useLoader() {
     if (this._loader) {
       window.addEventListener('load', Loader.remove(this._loader), { once: true });
@@ -45,7 +46,6 @@ class App {
     this._content.innerHTML = await page.render();
     await page.afterRender();
     await this._initiateOffCanvas();
-    // this._useLoader();
     this._useSkipToContent();
   }
 }

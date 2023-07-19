@@ -1,6 +1,6 @@
 import RESTO_API from '../../data/resto-api';
 import NavbarStylist from '../../styles/navbar-stylist';
-import { createListItem } from '../template/template-creator';
+import { createListItem, createSkeletonUi } from '../template/template-creator';
 
 const Home = {
   async render() {
@@ -12,6 +12,7 @@ const Home = {
 
   async afterRender() {
     this._showHero();
+    this._renderSkeletonUi();
     this._navbarScrollGradient();
     await this._showRestaurants();
   },
@@ -28,9 +29,17 @@ const Home = {
     });
   },
 
+  _renderSkeletonUi() {
+    const container = document.querySelector('.list-container');
+    for (let index = 0; index < 6; index++) {
+      container.innerHTML += createSkeletonUi();
+    }
+  },
+
   async _showRestaurants() {
     const restaurants = await RESTO_API.allRestaurants();
     const container = document.querySelector('.list-container');
+    container.innerHTML = '';
 
     restaurants.forEach((restaurant) => {
       container.append(createListItem(restaurant));

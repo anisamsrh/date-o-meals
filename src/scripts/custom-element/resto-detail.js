@@ -343,7 +343,7 @@ class RestoDetail extends HTMLElement {
 
     section.append(reviewHeader);
     section.append(reviewForm);
-    reviews.forEach((review) => {
+    reviews.reverse().forEach((review) => {
       reviewContainer.append(review);
     });
     section.append(reviewContainer);

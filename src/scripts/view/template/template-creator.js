@@ -25,4 +25,13 @@ const createRestaurantDetail = (detail) => {
   return restaurantDetailElement;
 };
 
-export { createListItem, createRestaurantDetail };
+const createSkeletonUi = () => {
+  const element = `
+    <div class="skeleton">
+    <div>
+  `;
+
+  return element;
+};
+
+export { createListItem, createRestaurantDetail, createSkeletonUi };

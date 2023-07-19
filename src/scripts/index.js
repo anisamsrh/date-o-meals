@@ -17,6 +17,6 @@ window.addEventListener('hashchange', () => {
 
 window.addEventListener('load', () => {
   app.renderPage();
-  app.useLoader();
+  // app.useLoader();
   // swRegister();
 });

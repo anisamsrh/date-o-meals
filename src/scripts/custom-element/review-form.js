@@ -1,4 +1,5 @@
 import RESTO_API from '../data/resto-api';
+import ReviewItem from './review-item';
 
 class ReviewForm extends HTMLElement {
   constructor(id) {
@@ -47,15 +48,17 @@ class ReviewForm extends HTMLElement {
         review,
       };
       const newReview = await this._sendReview(reviewData);
-      this._afterSendReview(newReview);
+      await this._afterSendReview(newReview);
     }, { signal });
     window.addEventListener('hashchange', () => controller.abort(), { once: true });
   }
 
   // eslint-disable-next-line class-methods-use-this
-  _afterSendReview(newReview) {
+  async _afterSendReview(newReview) {
     if (!newReview) {
-      alert('Succeed sending review');
+      const review = await newReview.json();
+      const newReviewItem = new ReviewItem(review);
+      document.querySelector('resto-detail').shadowRoot.querySelector('review-container').prepend(newReviewItem);
     } else {
       alert('Failed sending review');
     }
