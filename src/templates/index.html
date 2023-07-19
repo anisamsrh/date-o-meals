@@ -5,8 +5,8 @@
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>DOM | Date o Meals - Explore Restaurant and Cafe Around You</title>
   <link rel="preload" href="./images/logo/logo.svg" as="image">
-  <link rel="preload" href="./images/heros/hero-image-large.jpg" as="image">
-  <link rel="preload" href="./images/heros/hero-image-small.jpg" as="image">
+  <link rel="preload" href="./images/heros/hero-image-large.jpg" as="image" media="(min-width: 500px)">
+  <link rel="preload" href="./images/heros/hero-image-small.jpg" as="image" media="(max-width: 500px)">
   <link rel="preload" href="./font/OpenSans-VariableFont_wdth,wght.ttf" as="font" type="font/ttf">
   <link rel="icon" href="./images/logo/logo.svg">
   <link rel="manifest" href="./app.webmanifest">
@@ -28,8 +28,8 @@
     </nav>
     <div id="hero">
       <picture class="hero-image">
-        <source media="(min-width: 500px)" srcset="./images/heros/hero-image-large.jpg" type="image/jpeg">
-        <img src="./images/heros/hero-image-small.jpg">
+        <source media="(max-width: 500px)" srcset="./images/heros/hero-image-small.jpg" type="image/jpeg">
+        <img src="./images/heros/hero-image-large.jpg">
       </picture>
       <p class="hero-text">Find best place for your <b>Date o Meals</b> moment</p>
     </div>
